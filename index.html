@@ -442,28 +442,353 @@
 					of the grid. In a right-to-left language, it is on the right-hand side
 					of the grid.
 				</p>
-                <ol>
-                    <li>Positioning items against lines</li>
-                    <li>Line-positioning shorthands</li>
-                </ol>
+				<ol>
+					<li>Positioning items against lines</li>
+					<p>
+						In the following example I am placing the first two items on our
+						three column track grid, using the
+						<code class="inline-snippet">grid-column-start</code>,
+						<code class="inline-snippet">grid-column-end</code>,
+						<code class="inline-snippet">grid-row-start</code> and
+						<code class="inline-snippet">grid-row-end</code> properties. Working
+						from left to right, the first item is placed against column line 1,
+						and spans to column line 4, which in our case is the far-right line
+						on the grid. It begins at row line 1 and ends at row line 3,
+						therefore spanning two row tracks.
+					</p>
+					<p>
+						The second item starts on grid column line 1, and spans one track.
+						This is the default so I do not need to specify the end line. It
+						also spans two row tracks from row line 3 to row line 5. The other
+						items will place themselves into empty spaces on the grid.
+					</p>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                &lt;div class=&quot;wrapper&quot;&gt;
+                                  &lt;div class=&quot;box1&quot;&gt;One&lt;/div&gt;
+                                  &lt;div class=&quot;box2&quot;&gt;Two&lt;/div&gt;
+                                  &lt;div class=&quot;box3&quot;&gt;Three&lt;/div&gt;
+                                  &lt;div class=&quot;box4&quot;&gt;Four&lt;/div&gt;
+                                  &lt;div class=&quot;box5&quot;&gt;Five&lt;/div&gt;
+                                &lt;/div&gt;
+                            </code>
+                        </pre>
+					</div>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                .wrapper {
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                  grid-auto-rows: 100px;
+                                }
+                                
+                                .box1 {
+                                  grid-column-start: 1;
+                                  grid-column-end: 4;
+                                  grid-row-start: 1;
+                                  grid-row-end: 3;
+                                }
+                                
+                                .box2 {
+                                  grid-column-start: 1;
+                                  grid-row-start: 3;
+                                  grid-row-end: 5;
+                                }
+                            </code>
+                        </pre>
+					</div>
+					<li>Line-positioning shorthands</li>
+					<p>
+						The longhand values used above can be compressed onto one line for
+						columns with <code class="inline-snippet">grid-column</code>, and
+						one line for rows with <code class="inline-snippet">grid-row</code>.
+						The following example would give the same positioning as in the
+						previous code, but with far less CSS. The value before the forward
+						slash character <code class="inline-snippet">(/)</code> is the start
+						line, the value after the end line.
+					</p>
+					<p>You can omit the end value if the area only spans one track.</p>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                .wrapper {
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                  grid-auto-rows: 100px;
+                                }
+                                
+                                .box1 {
+                                  grid-column: 1 / 4;
+                                  grid-row: 1 / 3;
+                                }
+                                
+                                .box2 {
+                                  grid-column: 1;
+                                  grid-row: 3 / 5;
+                                }
+                            </code>
+                        </pre>
+					</div>
+				</ol>
 			</section>
 			<section class="main-section" id="Grid_Cells">
 				<header>Grid Cells</header>
+				<p>
+					A grid cell is the smallest unit on a grid. Conceptually it is like a
+					table cell. As we saw in our earlier examples, once a grid is defined
+					as a parent the child items will lay themselves out in one cell each
+					of the defined grid.
+				</p>
 			</section>
 			<section class="main-section" id="Grid_Areas">
 				<header>Grid Areas</header>
+				<p>
+					Items can span one or more cells both by row or by column, and this
+					creates a grid area. Grid areas must be rectangular – it isn’t
+					possible to create an L-shaped area for example.
+				</p>
 			</section>
 			<section class="main-section" id="Gutters">
 				<header>Gutters</header>
+				<p>
+					Gutters or alleys between grid cells can be created using the
+					<code class="inline-snippet">column-gap</code> and
+					<code class="inline-snippet">row-gap</code> properties, or the
+					shorthand <code class="inline-snippet">gap</code>. In the below
+					example, I am creating a 10-pixel gap between columns and a 1em gap
+					between rows.
+				</p>
+				<div class="snip-div">
+					<pre>
+                        <code class="snippet">
+                            .wrapper {
+                              display: grid;
+                              grid-template-columns: repeat(3, 1fr);
+                              column-gap: 10px;
+                              row-gap: 1em;
+                            }
+                        </code>
+                    </pre>
+				</div>
+				<span class="nb">
+					<strong>Note:</strong> When grid first shipped in browsers the
+					<code class="inline-snippet">column-gap</code>,
+					<code class="inline-snippet">row-gap</code> and
+					<code class="inline-snippet">gap</code> were prefixed with the
+					<code class="inline-snippet">grid-</code> prefix as
+					<code class="inline-snippet">grid-column-gap</code>,
+					<code class="inline-snippet">grid-row-gap</code> and
+					<code class="inline-snippet">grid-gap</code> respectively. Browsers
+					all now support unprefixed values, however the prefixed versions will
+					be maintained as aliases making them safe to use.</span
+				>
+				<p>
+					Any space used by gaps will be accounted for before space is assigned
+					to the flexible length <code class="inline-snippet">fr</code> tracks,
+					and gaps act for sizing purposes like a regular grid track, however
+					you cannot place anything into a gap. In terms of line-based
+					positioning, the gap acts like a thick line.
+				</p>
 			</section>
 			<section class="main-section" id="Nesting_Grids">
 				<header>Nesting Grids</header>
+				<p>
+					A grid item can become a grid container. In the following example, I
+					have the three-column grid that I created earlier, with our two
+					positioned items. In this case the first item has some sub-items. As
+					these items are not direct children of the grid they do not
+					participate in grid layout and so display in a normal document flow.
+				</p>
+				<ol>
+					<li>Nesting without subgrid</li>
+					<p>
+						If I set box1 to display: grid I can give it a track definition and
+						it too will become a grid. The items then lay out on this new grid.
+					</p>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                .box1 {
+                                  grid-column-start: 1;
+                                  grid-column-end: 4;
+                                  grid-row-start: 1;
+                                  grid-row-end: 3;
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                }
+                            </code>
+                        </pre>
+					</div>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                * {box-sizing: border-box;}
+                                
+                                .wrapper {
+                                  border: 2px solid #f76707;
+                                  border-radius: 5px;
+                                  background-color: #fff4e6;
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                }
+                                
+                                .box {
+                                  border: 2px solid #ffa94d;
+                                  border-radius: 5px;
+                                  background-color: #ffd8a8;
+                                  padding: 1em;
+                                  color: #d9480f;
+                                }
+                                
+                                .box1 {
+                                  grid-column: 1 / 4;
+                                }
+                                
+                                .nested {
+                                  border: 2px solid #ffec99;
+                                  border-radius: 5px;
+                                  background-color: #fff9db;
+                                  padding: 1em;
+                                }
+                            </code>
+                        </pre>
+					</div>
+					<p>
+						In this case the nested grid has no relationship to the parent. As
+						you can see in the example it has not inherited the
+						<code class="inline-snippet">gap</code> of the parent and the lines
+						in the nested grid do not align to the lines in the parent grid.
+					</p>
+					<li>Subgrid</li>
+					<p>
+						In the working draft of the Level 2 Grid specification there is a
+						feature called subgrid, which would let us create nested grids that
+						use the track definition of the parent grid.
+					</p>
+					<span class="nb"
+						><strong>Note:</strong> This feature shipped in Firefox 71, which is
+						currently the only browser to implement subgrid.</span
+					>
+					<p>
+						In the current specification, we would edit the above nested grid
+						example to change the track definition of
+						<code class="inline-snippet">
+							grid-template-columns: repeat(3, 1fr) </code
+						>, to
+						<code class="inline-snippet">grid-template-columns: subgrid</code>.
+						The nested grid will then use the parent grid tracks to layout
+						items.
+					</p>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                .box1 {
+                                  grid-column-start: 1;
+                                  grid-column-end: 4;
+                                  grid-row-start: 1;
+                                  grid-row-end: 3;
+                                  display: grid;
+                                  grid-template-columns: subgrid;
+                                }
+                            </code>
+                        </pre>
+					</div>
+				</ol>
 			</section>
 			<section class="main-section" id="Layering_Items_With_Z-Index">
 				<header>Layering Items With Z-Index</header>
+				<p>
+					Grid items can occupy the same cell, and in this case we can use the
+					<code class="inline-snippet">z-index</code> property to control the
+					order in which overlapping items stack.
+				</p>
+				<ol>
+					<li>Overlapping without z-index</li>
+					<p>
+						If we return to our example with items positioned by line number, we
+						can change this to make two items overlap.
+					</p>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                &lt;div class=&quot;wrapper&quot;&gt;
+                                  &lt;div class=&quot;box box1&quot;&gt;One&lt;/div&gt;
+                                  &lt;div class=&quot;box box2&quot;&gt;Two&lt;/div&gt;
+                                  &lt;div class=&quot;box box3&quot;&gt;Three&lt;/div&gt;
+                                  &lt;div class=&quot;box box4&quot;&gt;Four&lt;/div&gt;
+                                  &lt;div class=&quot;box box5&quot;&gt;Five&lt;/div&gt;
+                                &lt;/div&gt;
+                            </code>
+                        </pre>
+					</div>
+					<div class="snip-div">
+						<pre>
+                            <code class="snippet">
+                                .wrapper {
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                  grid-auto-rows: 100px;
+                                }
+                                
+                                .box1 {
+                                  grid-column-start: 1;
+                                  grid-column-end: 4;
+                                  grid-row-start: 1;
+                                  grid-row-end: 3;
+                                }
+                                
+                                .box2 {
+                                  grid-column-start: 1;
+                                  grid-row-start: 2;
+                                  grid-row-end: 4;
+                                }
+                            </code>
+                        </pre>
+					</div>
+					<p>
+						The item <code class="inline-snippet">box2</code> is now overlapping
+						<code class="inline-snippet">box1</code>, it displays on top as it
+						comes later in the source order.
+					</p>
+					<li>Controlling the order</li>
+					<p>
+						We can control the order in which items stack up by using the
+						<code class="inline-snippet">z-index</code> property - just like positioned items. If we give <code class="inline-snippet">box2</code> a
+						lower <code class="inline-snippet">z-index</code> than <code class="inline-snippet">box1</code> it will display below <code class="inline-snippet">box1</code> in the stack.
+					</p>
+                    <div class="snip-div">
+                        <pre>
+                            <code class="snippet">
+                                .wrapper {
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                  grid-auto-rows: 100px;
+                                }
+                                
+                                .box1 {
+                                  grid-column-start: 1;
+                                  grid-column-end: 4;
+                                  grid-row-start: 1;
+                                  grid-row-end: 3;
+                                  z-index: 2;
+                                }
+                                
+                                .box2 {
+                                  grid-column-start: 1;
+                                  grid-row-start: 2;
+                                  grid-row-end: 4;
+                                  z-index: 1;
+                                }
+                            </code>
+                        </pre>
+                    </div>
+				</ol>
 			</section>
 			<section class="main-section" id="Reference">
 				<header>Reference</header>
+                <p>Taken from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">MDN docs.</a></p>
 			</section>
 		</main>
 		<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
