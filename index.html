@@ -17,18 +17,22 @@
 		<div class="wrapper">
 			<nav id="navbar">
 				<header>Basic Concepts of Grid Layout</header>
-				<a href="#Basic_Concept" class="nav-link">Basic Concept</a>
-				<a href="#The_Grid_Container" class="nav-link">The Grid Container</a>
-				<a href="#Grid_Tracks" class="nav-link">Grid Tracks</a>
-				<a href="#Grid_Lines" class="nav-link">Grid Lines</a>
-				<a href="#Grid_Cells" class="nav-link">Grid Cells</a>
-				<a href="#Grid_Areas" class="nav-link">Grid Areas</a>
-				<a href="#Gutters" class="nav-link">Gutters</a>
-				<a href="#Nesting_Grids" class="nav-link">Nesting Grids</a>
-				<a href="#Layering_Items_With_Z-Index" class="nav-link"
-					>Layering Items With Z-Index</a
-				>
-				<a href="#Reference" class="nav-link">Reference</a>
+				<ol>
+					<li><a href="#Basic_Concept" class="nav-link">Basic Concept</a></li>
+					<li><a href="#The_Grid_Container" class="nav-link">The Grid Container</a></li>
+					<li><a href="#Grid_Tracks" class="nav-link">Grid Tracks</a></li>
+					<li><a href="#Grid_Lines" class="nav-link">Grid Lines</a></li>
+					<li><a href="#Grid_Cells" class="nav-link">Grid Cells</a></li>
+					<li><a href="#Grid_Areas" class="nav-link">Grid Areas</a></li>
+					<li><a href="#Gutters" class="nav-link">Gutters</a></li>
+					<li><a href="#Nesting_Grids" class="nav-link">Nesting Grids</a></li>
+					<li>
+						<a href="#Layering_Items_With_Z-Index" class="nav-link"
+							>Layering Items With Z-Index</a
+						>
+					</li>
+					<li><a href="#Reference" class="nav-link">Reference</a></li>
+				</ol>
 			</nav>
 			<main id="main-doc">
 				<section class="main-section" id="Basic_Concept">
@@ -43,8 +47,8 @@
 						columns and rows. Elements can be placed onto the grid within these
 						column and row lines. CSS grid layout has the following features:
 					</p>
-					<ol>
-						<li>Fixed and flexible track sizes</li>
+					<article>
+						<h2>Fixed and flexible track sizes</h2>
 						<p>
 							You can create a grid with fixed track sizes – using pixels for
 							example. This sets the grid to the specified pixel which fits to the
@@ -53,27 +57,27 @@
 							<code class="inline-snippet">fr</code> unit designed for this
 							purpose.
 						</p>
-						<li>Item placement</li>
+						<h2>Item placement</h2>
 						<p>
 							You can place items into a precise location on the grid using line
 							numbers, names or by targeting an area of the grid. Grid also
 							contains an algorithm to control the placement of items not given an
 							explicit position on the grid.
 						</p>
-						<li>Creation of additional tracks to hold content</li>
+						<h2>Creation of additional tracks to hold content</h2>
 						<p>
 							You can define an explicit grid with grid layout. The Grid Layout
 							specification is flexible enough to add additional rows and columns
 							when needed. Features such as adding “as many columns that will fit
 							into a container” are included.
 						</p>
-						<li>Alignment control</li>
+						<h2>Alignment control</h2>
 						<p>
 							Grid contains alignment features so we can control how the items
 							align once placed into a grid area, and how the entire grid is
 							aligned.
 						</p>
-						<li>Control of overlapping content</li>
+						<h2>Control of overlapping content</h2>
 						<p>
 							More than one item can be placed into a grid cell or area and they
 							can partially overlap each other. This layering may then be
@@ -86,7 +90,7 @@
 							previously impossible to build in CSS. It all starts by creating a
 							grid in your grid container.
 						</p>
-					</ol>
+					</article>
 				</section>
 				<section class="main-section" id="The_Grid_Container">
 					<header>The Grid Container</header>
@@ -101,7 +105,7 @@
 						In this example, I have a containing div with a class of wrapper and,
 						inside are five child elements.
 					</p>
-					<div class="snip-div">
+					
 						<pre>
 								   <code class="snippet">
 									   &lt;div class=&quot;wrapper&quot;&gt;
@@ -113,9 +117,9 @@
 									   &lt;/div&gt;
 								   </code>
 							   </pre>
-					</div>
+					
 					<p>I make the .wrapper a grid container.</p>
-					<div class="snip-div">
+					
 						<pre>
 								   <code class="snippet">
 									   .wrapper {
@@ -123,7 +127,7 @@
 									   }
 								   </code>
 							   </pre>
-					</div>
+					
 					<p>
 						All the direct children are now grid items. In a web browser, you
 						won’t see any difference to how these items are displayed before
@@ -141,8 +145,8 @@
 						These define grid tracks. A grid track is the space between any two
 						lines on the grid.
 					</p>
-					<ol>
-						<li>Basic example</li>
+					<article>
+						<h2>Basic example</h2>
 						<p>
 							I can add to our earlier example by adding the
 							<code class="inline-snippet">grid-template-columns</code> property,
@@ -152,7 +156,7 @@
 							I have now created a grid with three 200-pixel-wide column tracks.
 							The child items will be laid out on this grid one in each grid cell.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 								   <code class="snippet">
 									   &lt;div class=&quot;wrapper&quot;&gt;
@@ -164,8 +168,8 @@
 									   &lt;/div&gt;
 								   </code>
 							   </pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 									<code class="snippet">
 										.wrapper {
@@ -174,8 +178,8 @@
 										}
 									</code>
 								</pre>
-						</div>
-						<li>The fr unit</li>
+						
+						<h2>The fr unit</h2>
 						<p>
 							Tracks can be defined using any length unit. Grid also introduces an
 							additional length unit to help us create flexible grid tracks. The
@@ -184,7 +188,7 @@
 							definition would create three equal width tracks that grow and
 							shrink according to the available space.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -196,8 +200,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -206,8 +210,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<li>Unequal sizes</li>
+						
+						<h2>Unequal sizes</h2>
 						<p>
 							In this next example, we create a definition with a
 							<code class="inline-snippet">2fr</code> track then two
@@ -215,7 +219,7 @@
 							is split into four. Two parts are given to the first track and one
 							part each to the next two tracks.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -227,8 +231,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -237,8 +241,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<li>Mixing flexible and absolute sizes</li>
+						
+						<h2>Mixing flexible and absolute sizes</h2>
 						<p>
 							In this final example, we mix absolute sized tracks with
 							<code class="inline-snippet">fr</code> units. The first track is 500
@@ -246,7 +250,7 @@
 							The remaining space is divided into three and assigned in proportion
 							to the two flexible tracks.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -258,8 +262,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -268,14 +272,14 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<li>Track listings with repeat() notation</li>
+						
+						<h2>Track listings with repeat() notation</h2>
 						<p>
 							Large grids with many tracks can use the repeat() notation, to
 							repeat all or a section of the track listing. For example the grid
 							definition:
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -284,9 +288,9 @@
 											}
 										</code>
 									</pre>
-						</div>
+						
 						<p>Can also be written as:</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -295,7 +299,7 @@
 											}
 										</code>
 									</pre>
-						</div>
+						
 						<p>
 							Repeat notation can be used for a part of the track listing. In this
 							next example I have created a grid with an initial 20-pixel track,
@@ -303,7 +307,7 @@
 							<code class="inline-snippet">1fr</code> tracks then a final 20-pixel
 							track.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -312,7 +316,7 @@
 											}
 										</code>
 									</pre>
-						</div>
+						
 						<p>
 							Repeat notation takes the track listing, and uses it to create a
 							repeating pattern of tracks. In this next example, my grid will
@@ -321,7 +325,7 @@
 							a <code class="inline-snippet">2fr</code> track. This pattern will
 							be repeated five times.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -330,8 +334,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<li>The implicit and explicit grid</li>
+						
+						<h2>The implicit and explicit grid</h2>
 						<p>
 							When creating our example grid we specifically defined our column
 							tracks with the
@@ -357,7 +361,7 @@
 							<code class="inline-snippet">grid-auto-rows</code> to ensure that
 							tracks created in the implicit grid are 200 pixels tall.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -369,8 +373,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -380,8 +384,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<li>Track sizing and minmax</li>
+						
+						<h2>Track sizing and minmax</h2>
 						<p>
 							When setting up an explicit grid or defining the sizing for
 							automatically created rows or columns we may want to give tracks a
@@ -400,7 +404,7 @@
 							will look at the content size and will stretch to give space for the
 							tallest item in a cell, in this row.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -410,8 +414,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -426,8 +430,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-					</ol>
+						
+					</article>
 				</section>
 				<section class="main-section" id="Grid_Lines">
 					<header>Grid Lines</header>
@@ -440,8 +444,8 @@
 						of the grid. In a right-to-left language, it is on the right-hand side
 						of the grid.
 					</p>
-					<ol>
-						<li>Positioning items against lines</li>
+					<article>
+						<h2>Positioning items against lines</h2>
 						<p>
 							In the following example I am placing the first two items on our
 							three column track grid, using the
@@ -460,7 +464,7 @@
 							also spans two row tracks from row line 3 to row line 5. The other
 							items will place themselves into empty spaces on the grid.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -472,8 +476,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -496,8 +500,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<li>Line-positioning shorthands</li>
+						
+						<h2>Line-positioning shorthands</h2>
 						<p>
 							The longhand values used above can be compressed onto one line for
 							columns with <code class="inline-snippet">grid-column</code>, and
@@ -508,7 +512,7 @@
 							line, the value after the end line.
 						</p>
 						<p>You can omit the end value if the area only spans one track.</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -528,8 +532,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-					</ol>
+						
+					</article>
 				</section>
 				<section class="main-section" id="Grid_Cells">
 					<header>Grid Cells</header>
@@ -558,7 +562,7 @@
 						example, I am creating a 10-pixel gap between columns and a 1em gap
 						between rows.
 					</p>
-					<div class="snip-div">
+					
 						<pre>
 									<code class="snippet">
 										.wrapper {
@@ -569,7 +573,7 @@
 										}
 									</code>
 								</pre>
-					</div>
+					
 					<span class="nb">
 						<strong>Note:</strong> When grid first shipped in browsers the
 						<code class="inline-snippet">column-gap</code>,
@@ -599,13 +603,13 @@
 						these items are not direct children of the grid they do not
 						participate in grid layout and so display in a normal document flow.
 					</p>
-					<ol>
-						<li>Nesting without subgrid</li>
+					<article>
+						<h2>Nesting without subgrid</h2>
 						<p>
 							If I set box1 to display: grid I can give it a track definition and
 							it too will become a grid. The items then lay out on this new grid.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.box1 {
@@ -618,8 +622,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											* {box-sizing: border-box;}
@@ -652,14 +656,14 @@
 											}
 										</code>
 									</pre>
-						</div>
+						
 						<p>
 							In this case the nested grid has no relationship to the parent. As
 							you can see in the example it has not inherited the
 							<code class="inline-snippet">gap</code> of the parent and the lines
 							in the nested grid do not align to the lines in the parent grid.
 						</p>
-						<li>Subgrid</li>
+						<h2>Subgrid</h2>
 						<p>
 							In the working draft of the Level 2 Grid specification there is a
 							feature called subgrid, which would let us create nested grids that
@@ -679,7 +683,7 @@
 							The nested grid will then use the parent grid tracks to layout
 							items.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											.box1 {
@@ -692,8 +696,8 @@
 											}
 										</code>
 									</pre>
-						</div>
-					</ol>
+						
+					</article>
 				</section>
 				<section class="main-section" id="Layering_Items_With_Z-Index">
 					<header>Layering Items With Z-Index</header>
@@ -702,13 +706,13 @@
 						<code class="inline-snippet">z-index</code> property to control the
 						order in which overlapping items stack.
 					</p>
-					<ol>
-						<li>Overlapping without z-index</li>
+					<article>
+						<h2>Overlapping without z-index</h2>
 						<p>
 							If we return to our example with items positioned by line number, we
 							can change this to make two items overlap.
 						</p>
-						<div class="snip-div">
+						
 							<pre>
 										<code class="snippet">
 											&lt;div class=&quot;wrapper&quot;&gt;
@@ -720,8 +724,8 @@
 											&lt;/div&gt;
 										</code>
 									</pre>
-						</div>
-						<div class="snip-div">
+						
+						
 							<pre>
 										<code class="snippet">
 											.wrapper {
@@ -744,19 +748,19 @@
 											}
 										</code>
 									</pre>
-						</div>
+						
 						<p>
 							The item <code class="inline-snippet">box2</code> is now overlapping
 							<code class="inline-snippet">box1</code>, it displays on top as it
 							comes later in the source order.
 						</p>
-						<li>Controlling the order</li>
+						<h2>Controlling the order</h2>
 						<p>
 							We can control the order in which items stack up by using the
 							<code class="inline-snippet">z-index</code> property - just like positioned items. If we give <code class="inline-snippet">box2</code> a
 							lower <code class="inline-snippet">z-index</code> than <code class="inline-snippet">box1</code> it will display below <code class="inline-snippet">box1</code> in the stack.
 						</p>
-								<div class="snip-div">
+								
 									<pre>
 										<code class="snippet">
 											.wrapper {
@@ -781,8 +785,8 @@
 											}
 										</code>
 									</pre>
-								</div>
-					</ol>
+								
+					</article>
 				</section>
 				<section class="main-section" id="Reference">
 					<header>Reference</header>

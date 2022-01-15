@@ -20,10 +20,13 @@ header {
 
 li {
 	list-style: none;
-	margin: 5px 0;
-	font-size: 1.8em;
-	font-weight: 510;
-	text-transform: capitalize;
+}
+
+h2{
+    font-size: 1.8em;
+    font-weight: 510;
+    text-transform: capitalize;
+    margin:5px 0;
 }
 
 p {
@@ -33,7 +36,7 @@ p {
 .wrapper {
 	width: 95%;
 	margin: 0 auto;
-	/* max-width: 104em; */
+	
 	display: grid;
 	grid-auto-columns: minmax(100px, auto);
 	grid-auto-rows: minmax(100px, auto);
@@ -42,19 +45,26 @@ p {
 		"body";
 }
 
+.nb{
+    display: block;
+    background-color: #a6a6e6;
+    font-size:1.2em;
+}
+
 #navbar {
 	grid-area: nav;
 	height: 100px;
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
+    width:95vw;
 	text-align: center;
 	overflow-y: scroll;
 	border: 2px double #333333;
 	margin-bottom: 5px;
+  
 }
 
 .nav-link {
+    display: block;
+    padding: 1.4em;
 	text-decoration: none;
 	font-size: 1.6em;
 	color: #2e2c2c;
@@ -66,6 +76,13 @@ p {
 	background-color: #b8b2b2;
 }
 
+#main-doc {
+	grid-area: body;
+    height:100vh;
+    overflow-y: scroll;
+}
+
+
 .inline-snippet {
 	display: inline-block;
 	background-color: #dfdfdf;
@@ -74,8 +91,12 @@ p {
 	border: 0.5px solid #c9c7c7;
 }
 
-.snip-div {
-	max-width: 100%;
+
+
+pre {
+	text-align: center;
+	white-space: pre-line;
+    max-width: 100%;
 	display: block;
 	background-color: #dfdfdf;
 	margin: 3em 1em;
@@ -86,19 +107,11 @@ p {
 	border-radius: 2px;
 }
 
-pre {
-	text-align: center;
-	white-space: pre-line;
-}
-
 .snippet {
 	font-size: 1.2em;
 	font-family: "Courier New", Courier, monospace;
 }
 
-#main-doc {
-	grid-area: body;
-}
 
 @media (min-width: 800px) {
 	.wrapper {
@@ -109,21 +122,32 @@ pre {
 
 	#navbar {
 		height: 100vh;
-		display: fixed;
+		position: fixed;
 		top: 0;
 		left: 0;
 		border-right: 4px double;
 		border-color: #cabfbf;
-		overflow-y: auto;
 		width: 300px;
+        min-width: 250px;
+        
 	}
 
-	.nav-link {
-		padding: 15px;
-	}
+	
 
 	#main-doc {
 		height: 100vh;
 		overflow-y: scroll;
+      margin-left:120px;
 	}
+
+
+    p{font-size: 1.6em;}
+}
+
+@media(min-width:1100px){
+    #navbar{
+        width:400px;
+    }
+
+    
 }
