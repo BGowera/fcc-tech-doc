@@ -20,6 +20,7 @@ header {
 
 li {
 	list-style: none;
+
 }
 
 h2{
@@ -62,6 +63,13 @@ p {
   
 }
 
+.main-list>li{
+	margin-left: 20px;
+font-size: 1.2em;
+	text-align: center;
+	list-style: lower-roman;
+}
+
 .nav-link {
     display: block;
     padding: 1.4em;
@@ -79,7 +87,7 @@ p {
 #main-doc {
 	grid-area: body;
     height:100vh;
-    overflow-y: scroll;
+    
 }
 
 
@@ -133,6 +141,8 @@ pre {
 	}
 
 	
+	.main-list>li{
+font-size: 1.6em;}
 
 	#main-doc {
 		height: 100vh;
