@@ -1,14 +1,129 @@
-html{
-    font-size: 10px;
+html {
+	font-size: 10px;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-body{
-    font-family: 'Be Vietnam Pro', sans-serif;
-    line-height: 1.8;
+body {
+	font-family: "Be Vietnam Pro", sans-serif;
+	line-height: 1.8;
+}
+
+header {
+	font-size: 2.1em;
+	font-weight: 550;
+}
+
+li {
+	list-style: none;
+	margin: 5px 0;
+	font-size: 1.8em;
+	font-weight: 510;
+	text-transform: capitalize;
+}
+
+p {
+	font-size: 1.2em;
+}
+
+.wrapper {
+	width: 95%;
+	margin: 0 auto;
+	/* max-width: 104em; */
+	display: grid;
+	grid-auto-columns: minmax(100px, auto);
+	grid-auto-rows: minmax(100px, auto);
+	grid-template-areas:
+		"nav"
+		"body";
+}
+
+#navbar {
+	grid-area: nav;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	text-align: center;
+	overflow-y: scroll;
+	border: 2px double #333333;
+	margin-bottom: 5px;
+}
+
+.nav-link {
+	text-decoration: none;
+	font-size: 1.6em;
+	color: #2e2c2c;
+	border: 1px solid #706f6f;
+	background-color: #f8f5f5;
+}
+
+.nav-link:hover {
+	background-color: #b8b2b2;
+}
+
+.inline-snippet {
+	display: inline-block;
+	background-color: #dfdfdf;
+	padding: 3px;
+	margin: 0 5px;
+	border: 0.5px solid #c9c7c7;
+}
+
+.snip-div {
+	max-width: 100%;
+	display: block;
+	background-color: #dfdfdf;
+	margin: 3em 1em;
+	border-left: 4px solid #9191ce;
+	border-bottom: 2px solid #c9c7c7;
+	border-right: 2px double #c9c7c7;
+	border-top: 2px solid #c9c7c7;
+	border-radius: 2px;
+}
+
+pre {
+	text-align: center;
+	white-space: pre-line;
+}
+
+.snippet {
+	font-size: 1.2em;
+	font-family: "Courier New", Courier, monospace;
+}
+
+#main-doc {
+	grid-area: body;
+}
+
+@media (min-width: 800px) {
+	.wrapper {
+		grid-template-columns: 1fr 3fr;
+
+		grid-template-areas: "nav body";
+	}
+
+	#navbar {
+		height: 100vh;
+		display: fixed;
+		top: 0;
+		left: 0;
+		border-right: 4px double;
+		border-color: #cabfbf;
+		overflow-y: auto;
+		width: 300px;
+	}
+
+	.nav-link {
+		padding: 15px;
+	}
+
+	#main-doc {
+		height: 100vh;
+		overflow-y: scroll;
+	}
 }
